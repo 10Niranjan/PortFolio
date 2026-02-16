@@ -1,0 +1,67 @@
+---
+const skills = [
+  // Programming Languages
+  { name: 'Java', category: 'Languages' },
+  { name: 'JavaScript', category: 'Languages' },
+  { name: 'TypeScript', category: 'Languages' },
+  { name: 'C#', category: 'Languages' },
+  { name: 'Dart', category: 'Languages' },
+  { name: 'HTML', category: 'Languages' },
+  { name: 'CSS', category: 'Languages' },
+  { name: 'Python', category: 'Languages' },
+  
+  // Frameworks
+  { name: 'Spring Boot', category: 'Frameworks' },
+  { name: 'Flutter', category: 'Frameworks' },
+  { name: 'React', category: 'Frameworks' },
+  { name: 'Astro', category: 'Frameworks' },
+  { name: '.NET', category: 'Frameworks' },
+  { name: 'ASP.NET MVC', category: 'Frameworks' },
+  { name: 'Flask', category: 'Frameworks' },
+  
+  // Tools & DB
+  { name: 'MySQL', category: 'Tools' },
+  { name: 'PostgreSQL', category: 'Tools' },
+  { name: 'Git & GitHub', category: 'Tools' },
+  { name: 'IntelliJ IDEA', category: 'Tools' },
+  { name: 'VS Code', category: 'Tools' },
+  { name: 'Android Studio', category: 'Tools' },
+  { name: 'Gradle', category: 'Tools' },
+];
+
+const categories = [...new Set(skills.map(s => s.category))];
+---
+
+<section class="py-24 relative">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <p class="section-title">Technical Skills</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-zinc-100">My Stack</h2>
+    </div>
+
+    <!-- Skills by Category -->
+    <div class="space-y-12">
+      {categories.map((cat) => (
+        <div>
+          <h3 class="text-sm font-mono text-zinc-500 uppercase tracking-wider mb-4 flex items-center gap-3">
+            <span class="w-8 h-px bg-border"></span>
+            {cat}
+          </h3>
+          <div class="flex flex-wrap gap-3">
+            {skills.filter(s => s.category === cat).map((skill, i) => (
+              <span 
+                class="px-4 py-2 rounded-xl bg-surface/60 border border-border/50 text-sm text-zinc-300 
+                       hover:border-primary/40 hover:text-primary hover:bg-primary/5 
+                       transition-all duration-300 cursor-default backdrop-blur-sm"
+                style={`animation-delay: ${i * 0.05}s;`}
+              >
+                {skill.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

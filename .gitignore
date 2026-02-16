@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production
+dist/
+.vercel/
+
+# Misc
+.DS_Store
+.env
+.env.*
+!.env.example
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Java
+target/
+*.class
+.classpath
+.project
+.settings/
+.vscode/
+*.iml

@@ -1,0 +1,48 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: portfolio-backend
+
+  # Database — uses DATABASE_URL env var on Render, falls back to H2 locally
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:portfolio}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+    driver-class-name: ${DB_DRIVER:org.h2.Driver}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: ${DB_DIALECT:org.hibernate.dialect.H2Dialect}
+
+  # H2 Console (disabled in production)
+  h2:
+    console:
+      enabled: ${H2_CONSOLE:true}
+      path: /h2-console
+
+  # Mail Configuration
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+# App-specific config
+app:
+  mail:
+    enabled: ${MAIL_ENABLED:false}
+    to: ${MAIL_TO:pvt.niranjan10@gmail.com}
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:4321,http://localhost:3000}
