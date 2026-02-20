@@ -1,4 +1,6 @@
 ---
+import '@fontsource-variable/montserrat';
+
 interface Props {
   title?: string;
   description?: string;
@@ -20,8 +22,7 @@ const { title = 'Niranjan Patil — Software Developer', description = 'Full-sta
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body>
-    <div class="ambient-bg"></div>
+  <body class="bg-[var(--background)] sm:px-28 lg:px-20 px-6">
     <slot />
   </body>
 </html>

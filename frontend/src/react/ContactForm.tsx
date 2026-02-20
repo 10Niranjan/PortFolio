@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 
-const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:8080';
+// ⚡ Web3Forms — free contact form service (no backend needed)
+const WEB3FORMS_ACCESS_KEY = '6627bab7-018e-4a3e-8bde-836545653ef4';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -13,13 +14,21 @@ export default function ContactForm() {
     setErrorMsg('');
 
     try {
-      const res = await fetch(`${API_URL}/api/contact`, {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `📬 New Portfolio Contact: ${formData.name}`,
+          from_name: 'Portfolio Website',
+        }),
       });
 
-      if (!res.ok) throw new Error('Failed to send message');
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || 'Failed to send message');
       
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
@@ -34,7 +43,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label htmlFor="name" className="block text-xs font-mono text-zinc-500 uppercase tracking-wider mb-2">
+        <label htmlFor="name" className="block text-xs font-medium text-[#f3f3f398] uppercase tracking-wider mb-2">
           Name
         </label>
         <input
@@ -44,14 +53,14 @@ export default function ContactForm() {
           placeholder="Your name"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full px-4 py-3 rounded-xl bg-[#0a0a0b] border border-[#3f3f46]/50 text-zinc-200 
-                     placeholder:text-zinc-600 focus:outline-none focus:border-[#c4a0ff]/50 focus:ring-1 focus:ring-[#c4a0ff]/20
+          className="w-full px-4 py-3 rounded-xl bg-[#101010] border border-[#f3f3f310] text-[#dfdfdf] 
+                     placeholder:text-[#f3f3f340] focus:outline-none focus:border-[#a476ff50] focus:ring-1 focus:ring-[#a476ff20]
                      transition-all duration-300 text-sm"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-xs font-mono text-zinc-500 uppercase tracking-wider mb-2">
+        <label htmlFor="email" className="block text-xs font-medium text-[#f3f3f398] uppercase tracking-wider mb-2">
           Email
         </label>
         <input
@@ -61,14 +70,14 @@ export default function ContactForm() {
           placeholder="your@email.com"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="w-full px-4 py-3 rounded-xl bg-[#0a0a0b] border border-[#3f3f46]/50 text-zinc-200 
-                     placeholder:text-zinc-600 focus:outline-none focus:border-[#c4a0ff]/50 focus:ring-1 focus:ring-[#c4a0ff]/20
+          className="w-full px-4 py-3 rounded-xl bg-[#101010] border border-[#f3f3f310] text-[#dfdfdf] 
+                     placeholder:text-[#f3f3f340] focus:outline-none focus:border-[#a476ff50] focus:ring-1 focus:ring-[#a476ff20]
                      transition-all duration-300 text-sm"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-xs font-mono text-zinc-500 uppercase tracking-wider mb-2">
+        <label htmlFor="message" className="block text-xs font-medium text-[#f3f3f398] uppercase tracking-wider mb-2">
           Message
         </label>
         <textarea
@@ -78,8 +87,8 @@ export default function ContactForm() {
           placeholder="Tell me about your project..."
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="w-full px-4 py-3 rounded-xl bg-[#0a0a0b] border border-[#3f3f46]/50 text-zinc-200 
-                     placeholder:text-zinc-600 focus:outline-none focus:border-[#c4a0ff]/50 focus:ring-1 focus:ring-[#c4a0ff]/20
+          className="w-full px-4 py-3 rounded-xl bg-[#101010] border border-[#f3f3f310] text-[#dfdfdf] 
+                     placeholder:text-[#f3f3f340] focus:outline-none focus:border-[#a476ff50] focus:ring-1 focus:ring-[#a476ff20]
                      transition-all duration-300 text-sm resize-none"
         />
       </div>
@@ -108,11 +117,10 @@ export default function ContactForm() {
         type="submit"
         disabled={status === 'sending'}
         className="w-full py-3.5 rounded-xl font-medium text-sm transition-all duration-300 
-                   bg-gradient-to-r from-[#c4a0ff]/20 to-violet-500/20 border border-[#c4a0ff]/30 text-[#c4a0ff]
-                   hover:from-[#c4a0ff]/30 hover:to-violet-500/30 hover:border-[#c4a0ff]/50
+                   bg-[#a476ff15] border border-[#a476ff30] text-[#a476ff]
+                   hover:bg-[#a476ff25] hover:border-[#a476ff50]
                    disabled:opacity-50 disabled:cursor-not-allowed
                    flex items-center justify-center gap-2"
-        style={{ boxShadow: '0 0 20px rgba(196, 160, 255, 0.1)' }}
       >
         {status === 'sending' ? (
           <>

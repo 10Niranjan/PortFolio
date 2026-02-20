@@ -2,62 +2,54 @@
 const services = [
   {
     title: 'Web Development',
-    icon: '🌐',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM9.71002 19.6674C8.74743 17.6259 8.15732 15.3742 8.02731 13H4.06189C4.458 16.1765 6.71639 18.7747 9.71002 19.6674ZM10.0307 13C10.1811 15.4388 10.8778 17.7297 12 19.752C13.1222 17.7297 13.8189 15.4388 13.9693 13H10.0307ZM19.9381 13H15.9727C15.8427 15.3742 15.2526 17.6259 14.29 19.6674C17.2836 18.7747 19.542 16.1765 19.9381 13ZM4.06189 11H8.02731C8.15732 8.62577 8.74743 6.37407 9.71002 4.33256C6.71639 5.22533 4.458 7.8235 4.06189 11ZM10.0307 11H13.9693C13.8189 8.56122 13.1222 6.27025 12 4.24799C10.8778 6.27025 10.1811 8.56122 10.0307 11ZM14.29 4.33256C15.2526 6.37407 15.8427 8.62577 15.9727 11H19.9381C19.542 7.8235 17.2836 5.22533 14.29 4.33256Z"></path></svg>`,
     items: [
       'Single Page Applications (SPAs)',
       'Full-stack web applications',
       'Portfolio & business websites',
     ],
-    color: 'from-violet-500/20 to-purple-500/20',
   },
   {
     title: 'Mobile Development',
-    icon: '📱',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M7 4V20H17V4H7ZM6 2H18C18.5523 2 19 2.44772 19 3V21C19 21.5523 18.5523 22 18 22H6C5.44772 22 5 21.5523 5 21V3C5 2.44772 5.44772 2 6 2ZM12 17C12.5523 17 13 17.4477 13 18C13 18.5523 12.5523 19 12 19C11.4477 19 11 18.5523 11 18C11 17.4477 11.4477 17 12 17Z"></path></svg>`,
     items: [
       'Cross-platform Flutter apps',
       'Mobile-friendly web apps',
       'Native Android applications',
     ],
-    color: 'from-blue-500/20 to-cyan-500/20',
   },
   {
     title: 'Backend & API',
-    icon: '⚙️',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M5 11H19V5H5V11ZM21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20C20.5523 3 21 3.44772 21 4ZM5 13V19H19V13H5ZM7 15H10V17H7V15ZM7 7H10V9H7V7Z"></path></svg>`,
     items: [
       'Java Spring Boot REST APIs',
       'Database design (MySQL/PostgreSQL)',
       '.NET / ASP.NET MVC backends',
     ],
-    color: 'from-emerald-500/20 to-teal-500/20',
   },
 ];
 ---
 
-<section class="py-24 relative">
-  <div class="max-w-6xl mx-auto px-6">
-    <!-- Section Header -->
-    <div class="text-center mb-16">
-      <p class="section-title">Services</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-zinc-100">What I do?</h2>
-    </div>
+<section class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">Services</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-8">What I do?</h3>
 
-    <!-- Service Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {services.map((service, index) => (
-        <div class="glass-card-hover p-8 group" style={`animation-delay: ${index * 0.1}s;`}>
-          <!-- Icon -->
-          <div class="text-4xl mb-6">{service.icon}</div>
+      {services.map((service) => (
+        <div class="glass-card p-8 group">
+          <div class="text-[var(--white-icon)] mb-5 group-hover:text-[var(--sec)] transition-colors duration-300">
+            <Fragment set:html={service.icon} />
+          </div>
           
-          <!-- Title -->
-          <h3 class="text-xl font-semibold text-zinc-100 mb-4 group-hover:text-primary transition-colors">
+          <h4 class="text-xl font-semibold mb-4 group-hover:text-[var(--sec)] transition-colors duration-300">
             {service.title}
-          </h3>
+          </h4>
           
-          <!-- Items -->
           <ul class="space-y-3">
             {service.items.map((item) => (
-              <li class="flex items-start gap-3 text-sm text-zinc-400">
-                <span class="w-1 h-1 rounded-full bg-primary/60 mt-2 shrink-0"></span>
+              <li class="flex items-start gap-3 text-sm text-[var(--white-icon)]">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--sec)] mt-1.5 shrink-0 opacity-60"></span>
                 <span>{item}</span>
               </li>
             ))}

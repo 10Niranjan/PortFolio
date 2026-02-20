@@ -4,22 +4,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#c4a0ff',
-        accent: '#a78bfa',
-        surface: '#18181b',
-        'surface-light': '#27272a',
-        'surface-hover': '#3f3f46',
-        border: '#3f3f46',
+        primary: '#a476ff',
+        accent: '#a476ff',
+        surface: '#1a1a1a',
+        'surface-light': '#222222',
+        'surface-hover': '#2a2a2a',
+        border: '#ffffff10',
+        'component-bg': '#14141480',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['Montserrat Variable', 'system-ui', 'sans-serif'],
       },
       animation: {
-        'fade-in': 'fadeIn 0.6s ease-out',
-        'slide-up': 'slideUp 0.6s ease-out',
-        'float': 'float 6s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
+        'fade-in': 'fadeIn 0.6s ease-out forwards',
+        'slide-up': 'slideUp 0.6s ease-out forwards',
+        'slide-up-delay-1': 'slideUp 0.6s ease-out 0.1s forwards',
+        'slide-up-delay-2': 'slideUp 0.6s ease-out 0.2s forwards',
+        'slide-up-delay-3': 'slideUp 0.6s ease-out 0.3s forwards',
+        'scale': 'scaleAnim 300ms ease-in-out',
+        'shine': 'shine 3s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -27,16 +30,18 @@ export default {
           '100%': { opacity: '1' },
         },
         slideUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
+        scaleAnim: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.1)' },
+          '100%': { transform: 'scale(1)' },
         },
-        glow: {
-          '0%': { boxShadow: '0 0 5px rgba(196, 160, 255, 0.2)' },
-          '100%': { boxShadow: '0 0 20px rgba(196, 160, 255, 0.4)' },
+        shine: {
+          '0%': { backgroundPosition: '100% 50%' },
+          '30%, 70%': { backgroundPosition: '0% 50%' },
+          '100%': { backgroundPosition: '100% 50%' },
         },
       },
     },

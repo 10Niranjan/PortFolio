@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#101010"/>
+      <stop offset="50%" style="stop-color:#1a1040"/>
+      <stop offset="100%" style="stop-color:#a476ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <text x="400" y="220" text-anchor="middle" fill="#dfdfdf" font-family="sans-serif" font-size="36" font-weight="600">🌐 Portfolio</text>
+  <text x="400" y="270" text-anchor="middle" fill="#f3f3f380" font-family="sans-serif" font-size="18">Astro • React • TailwindCSS</text>
+  <text x="400" y="310" text-anchor="middle" fill="#a476ff" font-family="sans-serif" font-size="14">This Website</text>
+</svg>
