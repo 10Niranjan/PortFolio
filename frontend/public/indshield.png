@@ -1,13 +1,54 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1a1040"/>
-      <stop offset="50%" style="stop-color:#2d1b69"/>
-      <stop offset="100%" style="stop-color:#a476ff"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="50%" style="stop-color:#1a103a"/>
+      <stop offset="100%" style="stop-color:#2d1b69"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:0.8"/>
     </linearGradient>
   </defs>
-  <rect width="800" height="500" fill="url(#g)"/>
-  <text x="400" y="220" text-anchor="middle" fill="#dfdfdf" font-family="sans-serif" font-size="36" font-weight="600">🛡️ IndShield</text>
-  <text x="400" y="270" text-anchor="middle" fill="#f3f3f380" font-family="sans-serif" font-size="18">Industrial Safety • YOLOv8 • OpenCV</text>
-  <text x="400" y="310" text-anchor="middle" fill="#a476ff" font-family="sans-serif" font-size="14">Real-time Safety Detection</text>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="60" height="500" fill="#0d0d1a" opacity="0.9"/>
+  <circle cx="30" cy="30" r="8" fill="#a476ff" opacity="0.5"/>
+  <rect x="18" y="60" width="24" height="2" fill="#444" rx="1"/>
+  <rect x="18" y="80" width="24" height="2" fill="#444" rx="1"/>
+  <rect x="18" y="100" width="24" height="2" fill="#444" rx="1"/>
+  <!-- Header -->
+  <rect x="60" y="0" width="740" height="50" fill="#0d0d1a" opacity="0.7"/>
+  <text x="80" y="32" fill="#a476ff" font-family="sans-serif" font-size="16" font-weight="700">IndShield</text>
+  <text x="180" y="32" fill="#888" font-family="sans-serif" font-size="12">Dashboard</text>
+  <circle cx="750" cy="25" r="12" fill="#222"/>
+  <!-- Video feed area -->
+  <rect x="80" y="70" width="460" height="320" rx="12" fill="#111" stroke="#333" stroke-width="1"/>
+  <text x="310" y="240" text-anchor="middle" fill="#555" font-family="sans-serif" font-size="14">📹 Live Video Feed</text>
+  <!-- Detection boxes -->
+  <rect x="150" y="120" width="80" height="120" rx="4" fill="none" stroke="#4ade80" stroke-width="2" opacity="0.8"/>
+  <text x="155" y="115" fill="#4ade80" font-family="sans-serif" font-size="10">Helmet ✓</text>
+  <rect x="300" y="140" width="70" height="100" rx="4" fill="none" stroke="#4ade80" stroke-width="2" opacity="0.8"/>
+  <text x="305" y="135" fill="#4ade80" font-family="sans-serif" font-size="10">Vest ✓</text>
+  <rect x="420" y="130" width="60" height="110" rx="4" fill="none" stroke="#f87171" stroke-width="2" opacity="0.8"/>
+  <text x="425" y="125" fill="#f87171" font-family="sans-serif" font-size="10">No Helmet ✗</text>
+  <!-- Stats panel -->
+  <rect x="560" y="70" width="220" height="100" rx="12" fill="url(#card)" stroke="#ffffff10" stroke-width="1"/>
+  <text x="580" y="100" fill="#a476ff" font-family="sans-serif" font-size="12" font-weight="600">Detection Stats</text>
+  <text x="580" y="125" fill="#888" font-family="sans-serif" font-size="11">Workers Detected: 12</text>
+  <text x="580" y="145" fill="#4ade80" font-family="sans-serif" font-size="11">Compliant: 10 (83%)</text>
+  <text x="580" y="165" fill="#f87171" font-family="sans-serif" font-size="11">Violations: 2</text>
+  <!-- Alert panel -->
+  <rect x="560" y="190" width="220" height="200" rx="12" fill="url(#card)" stroke="#ffffff10" stroke-width="1"/>
+  <text x="580" y="220" fill="#a476ff" font-family="sans-serif" font-size="12" font-weight="600">Recent Alerts</text>
+  <rect x="575" y="235" width="190" height="35" rx="6" fill="#f8717120"/>
+  <text x="585" y="258" fill="#f87171" font-family="sans-serif" font-size="10">⚠ Zone A - No helmet detected</text>
+  <rect x="575" y="280" width="190" height="35" rx="6" fill="#4ade8020"/>
+  <text x="585" y="303" fill="#4ade80" font-family="sans-serif" font-size="10">✓ Zone B - All clear</text>
+  <rect x="575" y="325" width="190" height="35" rx="6" fill="#4ade8020"/>
+  <text x="585" y="348" fill="#4ade80" font-family="sans-serif" font-size="10">✓ Zone C - All clear</text>
+  <!-- Bottom bar -->
+  <rect x="80" y="410" width="460" height="70" rx="12" fill="url(#card)" stroke="#ffffff10" stroke-width="1"/>
+  <text x="100" y="440" fill="#a476ff" font-family="sans-serif" font-size="11" font-weight="600">Technologies</text>
+  <text x="100" y="462" fill="#888" font-family="sans-serif" font-size="10">Flask • YOLOv8 • MediaPipe • OpenCV • TensorFlow</text>
 </svg>
