@@ -20,18 +20,17 @@ export const personal = {
 };
 
 export const stats = [
-  { value: "132",  label: "Liters of coffee consumed" },
+  { value: "37",   label: "Liters of coffee consumed" },
   { value: "50K+", label: "Total lines of code written" },
-  { value: "100+", label: "DSA problems solved on LeetCode" },
-  { value: "3",    label: "Major projects delivered" },
-  { value: "7.0",  label: "CGPA in BE Information Technology" },
+  { value: "50",   label: "DSA problems solved on LeetCode" },
+  { value: "2",    label: "Projects in development" },
 ];
 
 export const highlights = [
-  "Building IndShield — AI-powered industrial safety with YOLOv8 & OpenCV.",
+  "Building Campus Connect — interactive campus collaboration platform.",
   "Fanclub Cricket App — cross-platform Flutter development with real-time data.",
   "Java To-Do App — CRUD task management with JavaFX & console interface.",
-  "Solving 100+ Java DSA problems on LeetCode — still counting.",
+  "Solving 50+ Java DSA problems on LeetCode — still counting.",
   "Google Cybersecurity Foundations — certified.",
 ];
 
