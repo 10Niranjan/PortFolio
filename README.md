@@ -1,67 +1,16 @@
-# Niranjan Patil — Portfolio
+# React + Vite
 
-Full-stack portfolio website with **Astro + React + TypeScript + TailwindCSS** frontend and **Java Spring Boot** backend.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🏗️ Structure
+Currently, two official plugins are available:
 
-```
-Portfolio/
-├── frontend/          # Astro + React + TailwindCSS
-│   ├── src/
-│   │   ├── components/    # Astro components
-│   │   ├── react/         # React interactive components
-│   │   ├── layouts/       # Page layouts
-│   │   ├── pages/         # Routes
-│   │   └── styles/        # Global CSS
-│   └── public/            # Static assets
-│
-└── backend/           # Java Spring Boot
-    └── src/main/java/com/niranjan/portfolio/
-        ├── controller/    # REST API controllers
-        ├── model/         # JPA entities
-        ├── repository/    # Data access
-        ├── service/       # Business logic
-        └── config/        # CORS, data seeder
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## 🚀 Local Development
+## React Compiler
 
-### Frontend
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-```bash
-cd frontend
-npm install
-npm run dev          # → http://localhost:4321
-```
+## Expanding the ESLint configuration
 
-### Backend
-
-```bash
-cd backend
-mvn spring-boot:run  # → http://localhost:8080
-```
-
-## 📡 API Endpoints
-
-| Method | Endpoint              | Description         |
-| ------ | --------------------- | ------------------- |
-| GET    | `/api/projects`       | All projects        |
-| GET    | `/api/skills`         | All skills          |
-| POST   | `/api/contact`        | Submit contact form |
-| GET    | `/api/contact/health` | Health check        |
-
-## 🌐 Environment Variables
-
-### Frontend
-
-- `PUBLIC_API_URL` — Backend API URL (default: `http://localhost:8080`)
-
-### Backend
-
-- `DATABASE_URL` — PostgreSQL connection string
-- `DB_USERNAME` / `DB_PASSWORD` — Database credentials
-- `DB_DRIVER` — JDBC driver class
-- `DB_DIALECT` — Hibernate dialect
-- `MAIL_HOST` / `MAIL_PORT` / `MAIL_USERNAME` / `MAIL_PASSWORD` — Email config
-- `MAIL_ENABLED` — Enable email notifications (`true`/`false`)
-- `CORS_ORIGINS` — Comma-separated allowed origins
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
