@@ -10,8 +10,23 @@ import { personal } from '@/data'
 export default function About() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
-  const words = personal.bio.split(' ')
-
+  const wordsRaw = personal.bio.split(' ')
+  let isBold = false
+  const words = wordsRaw.map(word => {
+    let currentBold = isBold
+    let cleanWord = word
+    if (cleanWord.startsWith('**')) {
+      currentBold = true
+      isBold = true
+      cleanWord = cleanWord.substring(2)
+    }
+    if (cleanWord.endsWith('**')) {
+      cleanWord = cleanWord.substring(0, cleanWord.length - 2)
+      currentBold = true
+      isBold = false
+    }
+    return { text: cleanWord, bold: currentBold }
+  })
   return (
     <section id="about" style={{
       padding: 'clamp(5rem, 10vh, 8rem) clamp(20px, 3.5vw, 48px)',
@@ -117,15 +132,20 @@ export default function About() {
             color: 'rgba(255,255,255,0.82)',
             margin: 0,
           }}>
-            {words.map((word, i) => (
+            {words.map((w, i) => (
               <motion.span
                 key={i}
-                style={{ display: 'inline' }}
+                style={{ 
+                  display: 'inline',
+                  fontWeight: w.bold ? 700 : 400,
+                  color: w.bold ? '#fff' : 'rgba(255,255,255,0.75)',
+                  letterSpacing: '-0.01em',
+                }}
                 initial={{ opacity: 0.1, filter: 'blur(4px)' }}
                 animate={inView ? { opacity: 1, filter: 'blur(0px)' } : {}}
                 transition={{ delay: 0.015 * i, duration: 0.45, ease: 'easeOut' }}
               >
-                {word}{' '}
+                {w.text}{' '}
               </motion.span>
             ))}
           </p>
@@ -139,29 +159,28 @@ export default function About() {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.6rem',
-              padding: '0.9rem 1.9rem',
+              gap: '1rem',
+              padding: '0.85rem 2.2rem',
               borderRadius: 999,
-              border: '1px solid rgba(255,255,255,0.12)',
-              background: 'rgba(255,255,255,0.04)',
-              backdropFilter: 'blur(10px)',
+              border: '1.5px solid #fff',
+              background: 'transparent',
               color: '#fff',
-              fontSize: '0.9rem',
-              fontWeight: 600,
+              fontSize: '1rem',
+              fontWeight: 500,
               textDecoration: 'none',
               width: 'fit-content',
               transition: 'all 0.25s',
+              fontFamily: 'inherit',
             }}
             whileHover={{
-              background: 'rgba(255,255,255,0.09)',
-              borderColor: 'rgba(255,255,255,0.24)',
+              background: 'rgba(255,255,255,0.1)',
               y: -2,
-              boxShadow: '0 12px 32px rgba(0,0,0,0.4)',
+              boxShadow: '0 8px 24px rgba(255,255,255,0.15)',
             }}
           >
-            <span style={{ color: '#7DF9FF', fontSize: '0.65rem' }}>✦</span>
+            <span style={{ color: '#fff', fontSize: '0.8rem' }}>✦</span>
             Get in touch
-            <span style={{ color: '#7DF9FF', fontSize: '0.65rem' }}>✦</span>
+            <span style={{ color: '#fff', fontSize: '0.8rem' }}>✦</span>
           </motion.a>
         </div>
       </div>
