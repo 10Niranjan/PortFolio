@@ -22,7 +22,7 @@ export const personal = {
 export const stats = [
   { value: "37",   label: "Liters of coffee consumed" },
   { value: "10+",  label: "Native APIs & State Managers Integrated" },
-  { value: "50",   label: "DSA problems solved on LeetCode" },
+  { value: "50+",  label: "DSA problems solved on LeetCode" },
   { value: "2",    label: "Projects in development" },
 ];
 
