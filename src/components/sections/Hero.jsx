@@ -63,54 +63,6 @@ const ProjectIcon = ({ index }) => {
       </g>
     </svg>,
     <svg key={2} width="56" height="56" viewBox="0 0 56 56" fill="none">
-      <circle cx="28" cy="28" r="22" fill="url(#globe-g)" opacity="0.9"/>
-      <ellipse cx="28" cy="28" rx="9" ry="22" stroke="white" strokeWidth="1.5" strokeOpacity="0.5" fill="none"/>
-      <line x1="6" y1="28" x2="50" y2="28" stroke="white" strokeWidth="1.5" strokeOpacity="0.5"/>
-      <defs><radialGradient id="globe-g" cx="35%" cy="30%" r="70%"><stop offset="0%" stopColor="#60a5fa"/><stop offset="100%" stopColor="#7c3aed"/></radialGradient></defs>
-    </svg>,
-    <svg key={3} width="56" height="56" viewBox="0 0 56 56" fill="none">
-      <rect x="10" y="8" width="36" height="40" rx="7" fill="url(#task-g)" opacity="0.9"/>
-      <path d="M20 22l4 4 10-10" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M20 34h18M20 40h12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.55"/>
-      <defs><linearGradient id="task-g" x1="10" y1="8" x2="46" y2="48"><stop offset="0%" stopColor="#f43f5e"/><stop offset="100%" stopColor="#a855f7"/></linearGradient></defs>
-    </svg>,
-    <svg key={4} width="56" height="56" viewBox="0 0 56 56" fill="none">
-      <defs>
-        <filter id="react-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="4" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <g filter="url(#react-glow)">
-        <circle cx="26" cy="26" r="3.5" fill="#44FFFF"/>
-        <ellipse cx="26" cy="26" rx="7" ry="18" transform="rotate(30 26 26)" stroke="#44FFFF" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-        <ellipse cx="26" cy="26" rx="7" ry="18" transform="rotate(90 26 26)" stroke="#44FFFF" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-        <ellipse cx="26" cy="26" rx="7" ry="18" transform="rotate(150 26 26)" stroke="#44FFFF" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-      </g>
-      <text x="36" y="44" fill="#ffffff" fontSize="16" fontWeight="bold" fontFamily="'Inter', sans-serif">19</text>
-    </svg>,
-    <svg key={5} width="56" height="56" viewBox="0 0 56 56" fill="none">
-      <defs>
-        <filter id="next-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="4" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <g filter="url(#next-glow)">
-        <path d="M28 38 V26 L16 14 M16 14 L22 14 M16 14 L16 20 M28 26 L40 14 M40 14 L34 14 M40 14 L40 20" stroke="#44FFFF" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="40" cy="40" r="8" fill="#44FFFF"/>
-        <text x="40" y="44" fill="#000000" fontSize="11" fontWeight="800" fontFamily="'Inter', sans-serif" textAnchor="middle">N</text>
-      </g>
-    </svg>,
-    <svg key={6} width="56" height="56" viewBox="0 0 56 56" fill="none">
       <circle cx="28" cy="28" r="22" fill="#1a1a2e" opacity="0.95"/>
       <path d="M28 14c-7.732 0-14 6.268-14 14 0 6.186 4.014 11.426 9.572 13.282.7.13.956-.304.956-.674 0-.332-.012-1.212-.018-2.38-3.894.846-4.716-1.878-4.716-1.878-.636-1.616-1.554-2.046-1.554-2.046-1.27-.87.096-.852.096-.852 1.404.098 2.144 1.442 2.144 1.442 1.248 2.14 3.274 1.522 4.072 1.164.126-.904.488-1.522.888-1.872-3.11-.354-6.378-1.556-6.378-6.926 0-1.53.546-2.78 1.442-3.762-.144-.354-.624-1.78.138-3.71 0 0 1.176-.376 3.852 1.436A13.41 13.41 0 0128 22.47c1.19.006 2.388.162 3.508.472 2.674-1.812 3.848-1.436 3.848-1.436.764 1.93.284 3.356.14 3.71.898.982 1.44 2.232 1.44 3.762 0 5.384-3.274 6.568-6.392 6.914.502.434.952 1.286.952 2.594 0 1.874-.016 3.382-.016 3.844 0 .372.254.81.964.672C37.99 39.42 42 34.182 42 28c0-7.732-6.268-14-14-14z" fill="white" opacity="0.85"/>
     </svg>
