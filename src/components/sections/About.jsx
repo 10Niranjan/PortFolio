@@ -42,11 +42,11 @@ export default function About() {
 
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 3fr)',
         gap: 'clamp(2.5rem, 6vw, 6rem)',
         alignItems: 'center',
       }}>
-        {/* Left: big monogram card */}
+        {/* Left: Portrait photo card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.94 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -55,73 +55,48 @@ export default function About() {
           style={{
             position: 'relative',
             borderRadius: 28,
-            background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(255,255,255,0.07)',
-            backdropFilter: 'blur(12px)',
-            minHeight: 380,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '1.5rem',
-            padding: '3rem 2rem',
+            border: '1px solid rgba(255,255,255,0.10)',
             overflow: 'hidden',
+            aspectRatio: '3 / 4',
+            width: '100%',
+            maxWidth: 420,
+            margin: '0 auto',
+            boxShadow: '0 0 60px rgba(124,58,237,0.18), 0 24px 64px rgba(0,0,0,0.55)',
           }}
         >
-          {/* Ambient glow rings */}
+          {/* Photo fills card completely */}
+          <img
+            src="/niranjan_original.jpg"
+            alt={personal.name}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center top',
+              display: 'block',
+            }}
+          />
+
+          {/* Subtle purple tint overlay */}
           <div style={{
             position: 'absolute',
-            width: 320, height: 320,
-            borderRadius: '50%',
-            top: '50%', left: '50%',
-            transform: 'translate(-50%, -50%)',
-            background: 'radial-gradient(circle, rgba(124,58,237,0.14) 0%, transparent 70%)',
-            animation: 'ringPulse 5s ease-in-out infinite',
+            inset: 0,
+            background: 'linear-gradient(160deg, rgba(124,58,237,0.08) 0%, transparent 50%)',
             pointerEvents: 'none',
           }} />
 
-          {/* Initials */}
-          <span style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontSize: 'clamp(5rem, 12vw, 9rem)',
-            fontWeight: 900,
-            letterSpacing: '-0.06em',
-            lineHeight: 0.9,
-            background: 'linear-gradient(135deg, #7DF9FF 0%, #4B0EAF 60%, #a855f7 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            position: 'relative',
-            zIndex: 2,
-          }}>
-            {personal.initials}
-          </span>
+          {/* Dark gradient at bottom for chip legibility */}
+          <div style={{
+            position: 'absolute',
+            bottom: 0, left: 0, right: 0,
+            height: '45%',
+            background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, transparent 100%)',
+            pointerEvents: 'none',
+          }} />
 
-          {/* Info chips */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', position: 'relative', zIndex: 2 }}>
-            <span style={{
-              padding: '0.35rem 1.1rem',
-              borderRadius: 999,
-              border: '1px solid rgba(255,255,255,0.1)',
-              background: 'rgba(255,255,255,0.04)',
-              fontSize: '0.75rem',
-              fontWeight: 500,
-              color: 'rgba(255,255,255,0.5)',
-            }}>
-              {personal.location}
-            </span>
-            <span style={{
-              padding: '0.35rem 1.1rem',
-              borderRadius: 999,
-              border: '1px solid rgba(125,249,255,0.35)',
-              background: 'rgba(125,249,255,0.07)',
-              fontSize: '0.75rem',
-              fontWeight: 600,
-              color: '#7DF9FF',
-            }}>
-              {personal.availability}
-            </span>
-          </div>
+
         </motion.div>
 
         {/* Right: Bio + CTA */}
