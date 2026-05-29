@@ -66,7 +66,7 @@ export default function About() {
         >
           {/* Photo fills card completely */}
           <img
-            src="/niranjan_original.jpg"
+            src="./niranjan_original.jpg"
             alt={personal.name}
             style={{
               position: 'absolute',
