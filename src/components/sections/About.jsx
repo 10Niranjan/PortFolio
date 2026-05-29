@@ -66,7 +66,7 @@ export default function About() {
         >
           {/* Photo fills card completely */}
           <img
-            src="./niranjan_original.jpg"
+            src={`${import.meta.env.BASE_URL}niranjan_original.jpg`}
             alt={personal.name}
             style={{
               position: 'absolute',
@@ -87,14 +87,6 @@ export default function About() {
             pointerEvents: 'none',
           }} />
 
-          {/* Dark gradient at bottom for chip legibility */}
-          <div style={{
-            position: 'absolute',
-            bottom: 0, left: 0, right: 0,
-            height: '45%',
-            background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, transparent 100%)',
-            pointerEvents: 'none',
-          }} />
 
 
         </motion.div>
