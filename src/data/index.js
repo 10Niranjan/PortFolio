@@ -56,6 +56,16 @@ export const projects = [
     inDevelopment: true,
   },
   {
+    id: 3,
+    title: "Tomorrow Me",
+    description: "AI-powered timeline simulator that predicts branching future scenarios based on current decisions, visualising paths using dynamic metrics and charts.",
+    tags: ["React", "Vite", "Gemini AI", "Chart.js", "Vanilla CSS"],
+    link: "https://tommorow-me.vercel.app",
+    github: "https://github.com/10Niranjan/Tommorow_Me",
+    size: "large",
+    inDevelopment: true,
+  },
+  {
     id: 7,
     title: "GitHub",
     description: "See more projects & open source contributions.",
