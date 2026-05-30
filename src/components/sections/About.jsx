@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { personal } from '@/data'
+import SpotifyPlayer from './SpotifyPlayer'
 
 /* davidhaz.com About section:
    - Dark section, full-width
@@ -149,6 +150,10 @@ export default function About() {
             Get in touch
             <span style={{ color: '#fff', fontSize: '0.8rem' }}>✦</span>
           </motion.a>
+
+          <div style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'flex-start' }}>
+            <SpotifyPlayer />
+          </div>
         </div>
       </div>
     </section>

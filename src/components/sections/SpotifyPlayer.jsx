@@ -1,0 +1,33 @@
+import { motion } from 'framer-motion'
+
+/* 
+  Real Spotify Embed — compact layout renders at height <= 152px
+  Playlist: https://open.spotify.com/playlist/2irOd49FRRLFWYccolQeea
+  Same playlist as on oscarhernandez.vercel.app (Andress_ssh · On repeat)
+*/
+export default function SpotifyPlayer() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      style={{ width: 320, flexShrink: 0 }}
+    >
+      <iframe
+        style={{
+          borderRadius: '12px',
+          border: 0,
+          display: 'block',
+        }}
+        src="https://open.spotify.com/embed/playlist/2irOd49FRRLFWYccolQeea?utm_source=generator&theme=0&locale=en_US"
+        width="320"
+        height="152"
+        allowFullScreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="Spotify Player"
+      />
+    </motion.div>
+  )
+}
