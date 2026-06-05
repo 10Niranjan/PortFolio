@@ -60,7 +60,7 @@ export const projects = [
     title: "Prophecy Aesthetics",
     description: "A premium single-page web experience showcasing personalized vision boards, featuring interactive SPA-style navigation, click-spark particle effects, and dynamic product/video galleries.",
     tags: ["HTML5", "Vanilla CSS", "JavaScript", "Vite"],
-    link: "https://prophecy-three.vercel.app",
+    link: "https://prophecy-nine.vercel.app/",
     github: "https://github.com/10Niranjan/Prophecy",
     size: "large",
     inDevelopment: true,
