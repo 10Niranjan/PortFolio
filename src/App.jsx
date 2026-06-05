@@ -22,7 +22,13 @@ export default function App() {
   }
 
   return (
-    <div style={{ background: '#000', minHeight: '100vh', overflowX: 'hidden' }}>
+    <div style={{
+      background: 'var(--color-bg)',
+      color: 'var(--color-text)',
+      minHeight: '100vh',
+      overflowX: 'hidden',
+      transition: 'background 0.4s cubic-bezier(0.16,1,0.3,1), color 0.4s cubic-bezier(0.16,1,0.3,1)',
+    }}>
       <Navbar onThemeToggle={toggleTheme} theme={theme} />
       <main>
         <Hero />
