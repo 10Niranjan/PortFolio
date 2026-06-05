@@ -17,7 +17,7 @@ export default function Skills() {
       <p style={{
         fontSize: '0.72rem', fontWeight: 700,
         letterSpacing: '0.13em', textTransform: 'uppercase',
-        color: 'rgba(255,255,255,0.3)',
+        color: 'var(--color-muted)',
         marginBottom: '3.5rem',
       }}>
         Skills &amp; Expertise
@@ -39,14 +39,14 @@ export default function Skills() {
               alignItems: 'center',
               gap: '2rem',
               padding: hovered === i ? '2.25rem 0' : '1.75rem 0',
-              borderTop: '1px solid rgba(255,255,255,0.07)',
+              borderTop: '1px solid var(--color-border)',
               cursor: 'default',
               transition: 'padding 0.4s cubic-bezier(0.16,1,0.3,1)',
             }}
           >
             {/* Left label */}
             <motion.p
-              animate={{ color: hovered === i ? '#7DF9FF' : '#fff' }}
+              animate={{ color: hovered === i ? '#7DF9FF' : 'var(--color-text)' }}
               transition={{ duration: 0.25 }}
               style={{
                 fontFamily: "'Outfit', sans-serif",
@@ -74,9 +74,9 @@ export default function Skills() {
               padding: hovered === i ? '0.75rem' : '0.4rem',
               background: hovered === i
                 ? `linear-gradient(135deg, ${skill.color} 0%, rgba(0,0,0,0.5) 120%)`
-                : 'rgba(255,255,255,0.04)',
+                : 'var(--glass-bg)',
               boxShadow: hovered === i ? `0 0 60px ${skill.color}55` : 'none',
-              border: '1px solid rgba(255,255,255,0.06)',
+              border: '1px solid var(--glass-border)',
               transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
               overflow: 'hidden',
             }}>
@@ -112,7 +112,7 @@ export default function Skills() {
 
             {/* Right label */}
             <motion.p
-              animate={{ color: hovered === i ? '#7DF9FF' : '#fff' }}
+              animate={{ color: hovered === i ? '#7DF9FF' : 'var(--color-text)' }}
               transition={{ duration: 0.25 }}
               style={{
                 fontFamily: "'Outfit', sans-serif",
@@ -129,7 +129,7 @@ export default function Skills() {
             </motion.p>
           </motion.div>
         ))}
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }} />
+        <div style={{ borderTop: '1px solid var(--color-border)' }} />
       </div>
     </section>
   )

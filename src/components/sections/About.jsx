@@ -35,7 +35,7 @@ export default function About() {
       <p style={{
         fontSize: '0.72rem', fontWeight: 700,
         letterSpacing: '0.13em', textTransform: 'uppercase',
-        color: 'rgba(255,255,255,0.3)',
+        color: 'var(--color-muted)',
         marginBottom: '4rem',
       }}>
         About
@@ -97,7 +97,7 @@ export default function About() {
           <p style={{
             fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
             lineHeight: 1.82,
-            color: 'rgba(255,255,255,0.82)',
+            color: 'var(--color-text)',
             margin: 0,
           }}>
             {words.map((w, i) => (
@@ -106,7 +106,7 @@ export default function About() {
                 style={{ 
                   display: 'inline',
                   fontWeight: w.bold ? 700 : 400,
-                  color: w.bold ? '#fff' : 'rgba(255,255,255,0.75)',
+                  color: w.bold ? 'var(--color-text)' : 'var(--color-muted)',
                   letterSpacing: '-0.01em',
                 }}
                 initial={{ opacity: 0.1, filter: 'blur(4px)' }}
@@ -130,9 +130,9 @@ export default function About() {
               gap: '1rem',
               padding: '0.85rem 2.2rem',
               borderRadius: 999,
-              border: '1.5px solid #fff',
+              border: '1.5px solid var(--color-text)',
               background: 'transparent',
-              color: '#fff',
+              color: 'var(--color-text)',
               fontSize: '1rem',
               fontWeight: 500,
               textDecoration: 'none',
@@ -141,14 +141,14 @@ export default function About() {
               fontFamily: 'inherit',
             }}
             whileHover={{
-              background: 'rgba(255,255,255,0.1)',
+              background: 'var(--glass-bg)',
               y: -2,
-              boxShadow: '0 8px 24px rgba(255,255,255,0.15)',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
             }}
           >
-            <span style={{ color: '#fff', fontSize: '0.8rem' }}>✦</span>
+            <span style={{ color: 'var(--color-text)', fontSize: '0.8rem' }}>✦</span>
             Get in touch
-            <span style={{ color: '#fff', fontSize: '0.8rem' }}>✦</span>
+            <span style={{ color: 'var(--color-text)', fontSize: '0.8rem' }}>✦</span>
           </motion.a>
 
           <div style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'flex-start' }}>

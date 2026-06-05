@@ -26,9 +26,9 @@ function ProjectRow({ project, index }) {
         alignItems: 'center',
         gap: '2rem',
         padding: '2rem 0',
-        borderTop: '1px solid rgba(255,255,255,0.07)',
+        borderTop: '1px solid var(--color-border)',
         textDecoration: 'none',
-        color: '#fff',
+        color: 'var(--color-text)',
         position: 'relative',
         cursor: 'pointer',
         transition: 'opacity 0.25s',
@@ -40,7 +40,7 @@ function ProjectRow({ project, index }) {
         fontFamily: "'Outfit', sans-serif",
         fontSize: '0.8rem',
         fontWeight: 500,
-        color: 'rgba(255,255,255,0.25)',
+        color: 'var(--color-muted)',
         letterSpacing: '0.04em',
         flexShrink: 0,
       }}>
@@ -56,7 +56,7 @@ function ProjectRow({ project, index }) {
             fontWeight: 800,
             letterSpacing: '-0.03em',
             lineHeight: 1.05,
-            color: '#fff',
+            color: 'var(--color-text)',
             margin: 0,
           }}>
             {project.title}
@@ -88,11 +88,11 @@ function ProjectRow({ project, index }) {
                 fontWeight: 600,
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.32)',
-                background: 'rgba(255,255,255,0.05)',
+                color: 'var(--color-muted)',
+                background: 'var(--glass-bg)',
                 padding: '0.2rem 0.6rem',
                 borderRadius: 999,
-                border: '1px solid rgba(255,255,255,0.07)',
+                border: '1px solid var(--glass-border)',
               }}>
                 {tag}
               </span>
@@ -100,7 +100,7 @@ function ProjectRow({ project, index }) {
           </div>
         )}
         {project.isGithub && (
-          <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>
+          <p style={{ fontSize: '0.82rem', color: 'var(--color-muted)', margin: 0 }}>
             {project.description}
           </p>
         )}
@@ -110,10 +110,10 @@ function ProjectRow({ project, index }) {
       <div style={{
         width: 44, height: 44,
         borderRadius: '50%',
-        border: '1.5px solid rgba(255,255,255,0.12)',
+        border: '1.5px solid var(--glass-border)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         flexShrink: 0,
-        color: 'rgba(255,255,255,0.5)',
+        color: 'var(--color-muted)',
         transition: 'all 0.25s',
       }}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -145,7 +145,7 @@ export default function Work() {
       <p style={{
         fontSize: '0.72rem', fontWeight: 700,
         letterSpacing: '0.13em', textTransform: 'uppercase',
-        color: 'rgba(255,255,255,0.3)',
+        color: 'var(--color-muted)',
         marginBottom: '3rem',
       }}>
         Selected Work
@@ -159,7 +159,7 @@ export default function Work() {
         {projects.filter(p => p.isGithub).map((project, i) => (
           <ProjectRow key={project.id} project={project} index={projects.filter(p => !p.isGithub).length + i} />
         ))}
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }} />
+        <div style={{ borderTop: '1px solid var(--color-border)' }} />
       </div>
     </section>
   )
