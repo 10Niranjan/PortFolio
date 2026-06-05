@@ -2,8 +2,7 @@ import { motion } from 'framer-motion'
 
 /* 
   Real Spotify Embed — compact layout renders at height <= 152px
-  Playlist: https://open.spotify.com/playlist/2irOd49FRRLFWYccolQeea
-  Same playlist as on oscarhernandez.vercel.app (Andress_ssh · On repeat)
+  Playlist: https://open.spotify.com/playlist/395vDKihoAXaP3akmWoecF
 */
 export default function SpotifyPlayer() {
   return (
@@ -20,7 +19,7 @@ export default function SpotifyPlayer() {
           border: 0,
           display: 'block',
         }}
-        src="https://open.spotify.com/embed/playlist/2irOd49FRRLFWYccolQeea?utm_source=generator&theme=0&locale=en_US"
+        src="https://open.spotify.com/embed/playlist/395vDKihoAXaP3akmWoecF?utm_source=generator&theme=0&locale=en_US"
         width="320"
         height="152"
         allowFullScreen
