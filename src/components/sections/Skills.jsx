@@ -1,135 +1,144 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { skills } from '@/data'
+import { AnimatePresence, motion } from 'framer-motion'
+import './Skills.css'
 
-/* davidhaz.com Skills section:
-   - Horizontal accordion rows with large typography
-   - Center panel expands on hover to show tech pills with skill color glow
-   - Very tight, typographic, minimal aesthetic */
+/* ─── Skill rows — exactly like davidhaz.com ───────────────────────
+   Each row: [word1] [pill with 3D image] [word2]
+   On hover: pill scales up + glow, tech tags slide in below
+──────────────────────────────────────────────────────────────────── */
+const SKILLS = [
+  {
+    word1: 'Mobile',
+    word2: 'development',
+    image: `${import.meta.env.BASE_URL}skill_mobile.png`,
+    alt: 'Smartphone 3D icon',
+    tags: ['Flutter', 'Dart', 'Firebase', 'Android Studio', 'Provider / Riverpod'],
+    glow: 'rgba(124, 58, 237, 0.55)',
+  },
+  {
+    word1: 'Java &',
+    word2: 'Spring backend',
+    image: `${import.meta.env.BASE_URL}skill_java.png`,
+    alt: 'Gear 3D icon',
+    tags: ['Java (8 · 17 · 21)', 'Spring Boot 3', 'Spring MVC', 'Spring Data JPA', 'Spring Security'],
+    glow: 'rgba(245, 158, 11, 0.55)',
+  },
+  {
+    word1: 'Web &',
+    word2: 'frontend',
+    image: `${import.meta.env.BASE_URL}skill_web.png`,
+    alt: 'Cursor 3D icon',
+    tags: ['React.js', 'JavaScript', 'HTML5 / CSS3', 'Tailwind CSS'],
+    glow: 'rgba(16, 185, 129, 0.55)',
+  },
+  {
+    word1: 'APIs &',
+    word2: 'messaging',
+    image: `${import.meta.env.BASE_URL}skill_api.png`,
+    alt: 'Network 3D icon',
+    tags: ['REST APIs', 'Apache Kafka', 'JWT / OAuth2', 'WebSockets'],
+    glow: 'rgba(236, 72, 153, 0.55)',
+  },
+  {
+    word1: 'Databases &',
+    word2: 'DevOps',
+    image: `${import.meta.env.BASE_URL}skill_db.png`,
+    alt: 'Database 3D icon',
+    tags: ['PostgreSQL', 'MongoDB', 'MySQL', 'Docker', 'Git / GitHub', 'CI/CD'],
+    glow: 'rgba(59, 130, 246, 0.55)',
+  },
+]
+
+const tagContainerVariants = {
+  hidden: { height: 0, opacity: 0 },
+  show: {
+    height: 'auto',
+    opacity: 1,
+    transition: {
+      height:  { duration: 0.38, ease: [0.16, 1, 0.3, 1] },
+      opacity: { duration: 0.22 },
+      staggerChildren: 0.04,
+      delayChildren:   0.05,
+    },
+  },
+  exit: {
+    height: 0,
+    opacity: 0,
+    transition: {
+      height:  { duration: 0.28, ease: [0.4, 0, 1, 1] },
+      opacity: { duration: 0.15 },
+    },
+  },
+}
+
+const tagVariants = {
+  hidden: { opacity: 0, y: 10, scale: 0.88 },
+  show:   { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 380, damping: 26 } },
+  exit:   { opacity: 0, y: 4, scale: 0.95, transition: { duration: 0.1 } },
+}
 
 export default function Skills() {
   const [hovered, setHovered] = useState(null)
 
   return (
-    <section id="skills" style={{
-      padding: 'clamp(5rem, 10vh, 8rem) clamp(20px, 3.5vw, 48px)',
-    }}>
-      <p style={{
-        fontSize: '0.72rem', fontWeight: 700,
-        letterSpacing: '0.13em', textTransform: 'uppercase',
-        color: 'var(--color-muted)',
-        marginBottom: '3.5rem',
-      }}>
-        Skills &amp; Expertise
-      </p>
+    <section id="skills" className="dh-skills-section">
+      {/* Eyebrow label */}
+      <p className="dh-eyebrow">Skills &amp; Expertise</p>
 
-      <div>
-        {skills.map((skill, i) => (
-          <motion.div
-            key={i}
-            onMouseEnter={() => setHovered(i)}
-            onMouseLeave={() => setHovered(null)}
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ delay: i * 0.07, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr auto 1fr',
-              alignItems: 'center',
-              gap: '2rem',
-              padding: hovered === i ? '2.25rem 0' : '1.75rem 0',
-              borderTop: '1px solid var(--color-border)',
-              cursor: 'default',
-              transition: 'padding 0.4s cubic-bezier(0.16,1,0.3,1)',
-            }}
-          >
-            {/* Left label */}
-            <motion.p
-              animate={{ color: hovered === i ? '#7DF9FF' : 'var(--color-text)' }}
-              transition={{ duration: 0.25 }}
-              style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: 'clamp(2rem, 4.5vw, 3.8rem)',
-                fontWeight: 800,
-                letterSpacing: '-0.03em',
-                lineHeight: 1,
-                margin: 0,
-                userSelect: 'none',
-              }}
-            >
-              {skill.label1}
-            </motion.p>
+      {/* Rows */}
+      <div className="dh-rows">
+        {SKILLS.map((skill, i) => {
+          const active = hovered === i
+          return (
+            <div key={i} className="dh-row-wrap">
+              {/* ── Main row ── */}
+              <div
+                className={`dh-row${active ? ' dh-row--active' : ''}`}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+                style={{ '--glow': skill.glow }}
+              >
+                {/* Left word */}
+                <span className="dh-word">{skill.word1}</span>
 
-            {/* Center expanding chip panel */}
-            <div style={{
-              minWidth: hovered === i ? 260 : 80,
-              minHeight: hovered === i ? 90 : 50,
-              borderRadius: 16,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-              gap: '0.3rem',
-              padding: hovered === i ? '0.75rem' : '0.4rem',
-              background: hovered === i
-                ? `linear-gradient(135deg, ${skill.color} 0%, rgba(0,0,0,0.5) 120%)`
-                : 'var(--glass-bg)',
-              boxShadow: hovered === i ? `0 0 60px ${skill.color}55` : 'none',
-              border: '1px solid var(--glass-border)',
-              transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
-              overflow: 'hidden',
-            }}>
-              {hovered === i
-                ? skill.items.map((item, j) => (
-                    <motion.span
-                      key={j}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: j * 0.04, duration: 0.28 }}
-                      style={{
-                        padding: '0.2rem 0.65rem',
-                        borderRadius: 999,
-                        background: 'rgba(255,255,255,0.15)',
-                        border: '1px solid rgba(255,255,255,0.2)',
-                        fontSize: '0.68rem',
-                        fontWeight: 600,
-                        color: '#fff',
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      {item}
-                    </motion.span>
-                  ))
-                : <span style={{
-                    width: 6, height: 6, borderRadius: '50%',
-                    background: skill.color,
-                    display: 'block',
-                    boxShadow: `0 0 8px ${skill.color}`,
-                  }} />
-              }
+                {/* Pill with 3D image */}
+                <div className={`dh-pill${active ? ' dh-pill--active' : ''}`}>
+                  <img
+                    src={skill.image}
+                    alt={skill.alt}
+                    className="dh-pill-img"
+                    draggable={false}
+                  />
+                </div>
+
+                {/* Right word */}
+                <span className="dh-word">{skill.word2}</span>
+              </div>
+
+              {/* ── Tech tags — slide in below ── */}
+              <AnimatePresence>
+                {active && (
+                  <motion.div
+                    key="tags"
+                    variants={tagContainerVariants}
+                    initial="hidden"
+                    animate="show"
+                    exit="exit"
+                    className="dh-tags-row"
+                    onMouseEnter={() => setHovered(i)}
+                    onMouseLeave={() => setHovered(null)}
+                  >
+                    {skill.tags.map((tag, j) => (
+                      <motion.span key={j} variants={tagVariants} className="dh-tag">
+                        {tag}
+                      </motion.span>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-
-            {/* Right label */}
-            <motion.p
-              animate={{ color: hovered === i ? '#7DF9FF' : 'var(--color-text)' }}
-              transition={{ duration: 0.25 }}
-              style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: 'clamp(2rem, 4.5vw, 3.8rem)',
-                fontWeight: 800,
-                letterSpacing: '-0.03em',
-                lineHeight: 1,
-                textAlign: 'right',
-                margin: 0,
-                userSelect: 'none',
-              }}
-            >
-              {skill.label2}
-            </motion.p>
-          </motion.div>
-        ))}
-        <div style={{ borderTop: '1px solid var(--color-border)' }} />
+          )
+        })}
       </div>
     </section>
   )
