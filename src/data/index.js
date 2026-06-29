@@ -14,6 +14,7 @@ export const personal = {
   email: "pvt.niranjan10@gmail.com",
   phone: "+91 9284774471",
   resumeUrl: "/resume.pdf",
+  portfolioRepo: "https://github.com/10Niranjan/portfolio",
   socials: {
     github: "https://github.com/10Niranjan",
   },
