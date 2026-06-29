@@ -83,7 +83,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="dh-skills-section">
-      <SectionLabel>Skills &amp; Expertise</SectionLabel>
+      <SectionLabel align="center">Skills &amp; Expertise</SectionLabel>
 
       {/* Rows */}
       <div className="dh-rows">

@@ -25,7 +25,7 @@ export default function Footer() {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.5rem',
-            fontSize: '0.72rem',
+            fontSize: 'clamp(0.85rem, 1.1vw, 1.05rem)',
             fontWeight: 700,
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
