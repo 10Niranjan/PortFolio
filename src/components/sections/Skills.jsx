@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import './Skills.css'
+import SectionLabel from '@/components/ui/SectionLabel'
 
 /* ─── Skill rows — exactly like davidhaz.com ───────────────────────
    Each row: [word1] [pill with 3D image] [word2]
@@ -82,8 +83,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="dh-skills-section">
-      {/* Eyebrow label */}
-      <p className="dh-eyebrow">Skills &amp; Expertise</p>
+      <SectionLabel>Skills &amp; Expertise</SectionLabel>
 
       {/* Rows */}
       <div className="dh-rows">

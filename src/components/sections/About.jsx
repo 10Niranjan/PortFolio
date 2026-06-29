@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { personal } from '@/data'
 import SpotifyPlayer from './SpotifyPlayer'
+import SectionLabel from '@/components/ui/SectionLabel'
 
 /* davidhaz.com About section:
    - Dark section, full-width
@@ -32,14 +33,7 @@ export default function About() {
     <section id="about" style={{
       padding: 'clamp(5rem, 10vh, 8rem) clamp(20px, 3.5vw, 48px)',
     }}>
-      <p style={{
-        fontSize: '0.72rem', fontWeight: 700,
-        letterSpacing: '0.13em', textTransform: 'uppercase',
-        color: 'var(--color-muted)',
-        marginBottom: '4rem',
-      }}>
-        About
-      </p>
+      <SectionLabel style={{ marginBottom: '4rem' }}>About</SectionLabel>
 
       <div style={{
         display: 'grid',

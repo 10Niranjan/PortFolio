@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { projects } from '@/data'
+import SectionLabel from '@/components/ui/SectionLabel'
 
 /* davidhaz.com Work section: 
    - "Selected Work" eyebrow label
@@ -142,14 +143,7 @@ export default function Work() {
     <section id="work" style={{
       padding: 'clamp(5rem, 10vh, 8rem) clamp(20px, 3.5vw, 48px)',
     }}>
-      <p style={{
-        fontSize: '0.72rem', fontWeight: 700,
-        letterSpacing: '0.13em', textTransform: 'uppercase',
-        color: 'var(--color-muted)',
-        marginBottom: '3rem',
-      }}>
-        Selected Work
-      </p>
+      <SectionLabel>Selected Work</SectionLabel>
 
       <div>
         {projects.filter(p => !p.isGithub).map((project, i) => (
