@@ -24,8 +24,8 @@ export default function SectionLabel({ children, style = {}, align = 'left' }) {
         ...style,
       }}
     >
-      {/* Wrapper: inline-block so underline hugs the text width */}
-      <div style={{ position: 'relative', display: 'inline-block', paddingBottom: '8px' }}>
+      {/* Wrapper: inline-block */}
+      <div style={{ position: 'relative', display: 'inline-block' }}>
         {/* Letter-by-letter animated text */}
         <p style={{
           fontSize: 'clamp(0.85rem, 1.1vw, 1.05rem)',
@@ -76,56 +76,6 @@ export default function SectionLabel({ children, style = {}, align = 'left' }) {
             }}
           />
         </p>
-
-        {/* Glowing underline — draws across */}
-        <motion.div
-          aria-hidden
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            height: 1.5,
-            background: 'linear-gradient(90deg, rgba(125,249,255,0.9) 0%, rgba(168,85,247,0.6) 100%)',
-            borderRadius: 2,
-          }}
-          initial={{ width: 0, opacity: 0 }}
-          animate={inView ? { width: '100%', opacity: 1 } : {}}
-          transition={{
-            delay: letters.length * 0.035 + 0.1,
-            duration: 0.55,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-        />
-
-        {/* Ambient glow below underline — loops */}
-        <motion.div
-          aria-hidden
-          style={{
-            position: 'absolute',
-            bottom: -4,
-            left: '5%',
-            right: '5%',
-            height: 10,
-            background: 'radial-gradient(ellipse at center, rgba(125,249,255,0.4) 0%, transparent 70%)',
-            filter: 'blur(5px)',
-            pointerEvents: 'none',
-          }}
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={inView ? {
-            opacity: [0, 1, 0.55, 1, 0.55],
-            scaleX: 1,
-          } : {}}
-          transition={{
-            delay: letters.length * 0.035 + 0.55,
-            scaleX: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
-            opacity: {
-              repeat: Infinity,
-              repeatType: 'mirror',
-              duration: 2.4,
-              delay: letters.length * 0.035 + 0.85,
-            },
-          }}
-        />
       </div>
     </div>
   )

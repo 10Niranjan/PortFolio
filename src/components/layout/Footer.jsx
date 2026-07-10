@@ -31,7 +31,6 @@ export default function Footer() {
             textTransform: 'uppercase',
             color: 'var(--color-muted)',
             textDecoration: 'none',
-            paddingBottom: '6px',
             overflow: 'visible',
           }}
           whileHover={{ color: 'var(--color-text)' }}
@@ -80,41 +79,6 @@ export default function Footer() {
             initial={{ x: '-100%', opacity: 0 }}
             animate={inView ? { x: '320%', opacity: [0, 1, 1, 0] } : {}}
             transition={{ delay: 0.85, duration: 0.65, ease: 'easeInOut' }}
-          />
-
-          {/* Glowing underline */}
-          <motion.span
-            aria-hidden
-            style={{
-              position: 'absolute',
-              bottom: 0, left: 0,
-              height: 1,
-              background: 'linear-gradient(90deg, rgba(125,249,255,0.7) 0%, rgba(168,85,247,0.5) 100%)',
-              borderRadius: 1,
-            }}
-            initial={{ width: 0 }}
-            animate={inView ? { width: '100%' } : {}}
-            transition={{ delay: 0.8, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          />
-
-          {/* Pulse glow */}
-          <motion.span
-            aria-hidden
-            style={{
-              position: 'absolute',
-              bottom: -3, left: '10%', right: '10%',
-              height: 8,
-              background: 'radial-gradient(ellipse at center, rgba(125,249,255,0.3) 0%, transparent 70%)',
-              filter: 'blur(4px)',
-              pointerEvents: 'none',
-            }}
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={inView ? { opacity: [0, 1, 0.6, 1, 0.6], scaleX: 1 } : {}}
-            transition={{
-              delay: 1.1,
-              scaleX: { duration: 0.4 },
-              opacity: { repeat: Infinity, repeatType: 'mirror', duration: 2.5, delay: 1.2 },
-            }}
           />
         </motion.a>
       </div>
