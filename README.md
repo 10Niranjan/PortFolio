@@ -1,4 +1,4 @@
-# Niranjan Patil — Portfoli
+# Niranjan Patil — Portfolio
 
 > **Code. Design. Ship.** — Personal portfolio showcasing full-stack projects, skills & experience.
 
