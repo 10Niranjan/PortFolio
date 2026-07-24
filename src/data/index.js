@@ -47,6 +47,16 @@ export const projects = [
     inDevelopment: true,
   },
   {
+    id: 8,
+    title: "Jyoti Traders",
+    description: "Closed, invite-only B2B wholesale ordering app for a local Kirana distributor and its network of verified retailers, built with Clean Architecture and a Hive-backed simulation mode for offline-first development.",
+    tags: ["Flutter", "Riverpod", "Firebase", "Firestore", "Clean Architecture", "Hive"],
+    link: null,
+    github: "https://github.com/10Niranjan/Jyoti-Kirana",
+    size: "large",
+    inDevelopment: true,
+  },
+  {
     id: 2,
     title: "Campus Connect",
     description: "Interactive campus collaboration platform featuring student forums, event boards, lost-and-found listings, and peer-to-peer marketplace.",

@@ -11,13 +11,13 @@ import SectionLabel from '@/components/ui/SectionLabel'
 function ProjectRow({ project, index }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
+  const hasLink = Boolean(project.link)
+  const Tag = hasLink ? motion.a : motion.div
 
   return (
-    <motion.a
+    <Tag
       ref={ref}
-      href={project.link || project.github}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...(hasLink ? { href: project.link, target: '_blank', rel: 'noopener noreferrer' } : {})}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -31,10 +31,10 @@ function ProjectRow({ project, index }) {
         textDecoration: 'none',
         color: 'var(--color-text)',
         position: 'relative',
-        cursor: 'pointer',
+        cursor: hasLink ? 'pointer' : 'default',
         transition: 'opacity 0.25s',
       }}
-      whileHover={{ opacity: 0.75 }}
+      whileHover={hasLink ? { opacity: 0.75 } : {}}
     >
       {/* Index number */}
       <span style={{
@@ -108,19 +108,21 @@ function ProjectRow({ project, index }) {
       </div>
 
       {/* Arrow */}
-      <div style={{
-        width: 44, height: 44,
-        borderRadius: '50%',
-        border: '1.5px solid var(--glass-border)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        flexShrink: 0,
-        color: 'var(--color-muted)',
-        transition: 'all 0.25s',
-      }}>
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M3.5 14.5L14.5 3.5M14.5 3.5H6.5M14.5 3.5v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </div>
+      {hasLink && (
+        <div style={{
+          width: 44, height: 44,
+          borderRadius: '50%',
+          border: '1.5px solid var(--glass-border)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexShrink: 0,
+          color: 'var(--color-muted)',
+          transition: 'all 0.25s',
+        }}>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M3.5 14.5L14.5 3.5M14.5 3.5H6.5M14.5 3.5v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      )}
 
       {/* Hover border-bottom accent line */}
       <motion.div
@@ -134,7 +136,7 @@ function ProjectRow({ project, index }) {
         whileHover={{ scaleX: 1 }}
         transition={{ duration: 0.35 }}
       />
-    </motion.a>
+    </Tag>
   )
 }
 
