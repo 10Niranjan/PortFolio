@@ -51,7 +51,7 @@ export const projects = [
     title: "Campus Connect",
     description: "Interactive campus collaboration platform featuring student forums, event boards, lost-and-found listings, and peer-to-peer marketplace.",
     tags: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "Tailwind CSS"],
-    link: "https://github.com/10Niranjan",
+    link: "https://campus-connect-pied-eight.vercel.app/",
     github: "https://github.com/10Niranjan",
     size: "large",
     inDevelopment: true,
