@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { projects } from '@/data'
 import SectionLabel from '@/components/ui/SectionLabel'
+import SpotlightCard from '@/components/react-bits/SpotlightCard'
 
 /* davidhaz.com Work section: 
    - "Selected Work" eyebrow label
@@ -36,6 +37,12 @@ function ProjectRow({ project, index }) {
       }}
       whileHover={hasLink ? { opacity: 0.75 } : {}}
     >
+      {/* Spotlight glow — sits behind the row content, tracks the cursor */}
+      <SpotlightCard
+        style={{ position: 'absolute', inset: 0, zIndex: 0, borderRadius: 0 }}
+        spotlightColor="rgba(125, 249, 255, 0.16)"
+      />
+
       {/* Index number */}
       <span style={{
         fontFamily: "'Outfit', sans-serif",
@@ -44,12 +51,14 @@ function ProjectRow({ project, index }) {
         color: 'var(--color-muted)',
         letterSpacing: '0.04em',
         flexShrink: 0,
+        position: 'relative',
+        zIndex: 1,
       }}>
         {String(index + 1).padStart(2, '0')}
       </span>
 
       {/* Title + tags */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', minWidth: 0 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', minWidth: 0, position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap' }}>
           <h2 style={{
             fontFamily: "'Outfit', sans-serif",
@@ -117,6 +126,8 @@ function ProjectRow({ project, index }) {
           flexShrink: 0,
           color: 'var(--color-muted)',
           transition: 'all 0.25s',
+          position: 'relative',
+          zIndex: 1,
         }}>
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
             <path d="M3.5 14.5L14.5 3.5M14.5 3.5H6.5M14.5 3.5v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>

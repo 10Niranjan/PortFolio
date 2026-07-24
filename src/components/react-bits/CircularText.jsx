@@ -19,10 +19,11 @@ const getTransition = (duration, from) => ({
   }
 });
 
-const CircularText = ({ text, spinDuration = 20, onHover = 'speedUp', className = '' }) => {
+const CircularText = ({ text, spinDuration = 20, onHover = 'speedUp', className = '', size = 200, fontSize = 24 }) => {
   const letters = Array.from(text);
   const controls = useAnimation();
   const rotation = useMotionValue(0);
+  const radius = size / 2;
 
   useEffect(() => {
     const start = rotation.get();
@@ -80,8 +81,8 @@ const CircularText = ({ text, spinDuration = 20, onHover = 'speedUp', className 
 
   return (
     <motion.div
-      className={`m-0 mx-auto rounded-full w-[200px] h-[200px] relative text-white font-black text-center cursor-pointer origin-center ${className}`}
-      style={{ rotate: rotation }}
+      className={`m-0 mx-auto rounded-full relative font-black text-center cursor-pointer origin-center ${className}`}
+      style={{ rotate: rotation, width: size, height: size, color: 'var(--color-text)' }}
       initial={{ rotate: 0 }}
       animate={controls}
       onMouseEnter={handleHoverStart}
@@ -89,16 +90,19 @@ const CircularText = ({ text, spinDuration = 20, onHover = 'speedUp', className 
     >
       {letters.map((letter, i) => {
         const rotationDeg = (360 / letters.length) * i;
-        const factor = Math.PI / letters.length;
-        const x = factor * i;
-        const y = factor * i;
-        const transform = `rotateZ(${rotationDeg}deg) translate3d(${x}px, ${y}px, 0)`;
+        const transform = `translate(-50%, -50%) rotate(${rotationDeg}deg) translateY(-${radius}px)`;
 
         return (
           <span
             key={i}
-            className="absolute inline-block inset-0 text-2xl transition-all duration-500 ease-[cubic-bezier(0,0,0,1)]"
-            style={{ transform, WebkitTransform: transform }}
+            className="absolute inline-block"
+            style={{
+              top: '50%',
+              left: '50%',
+              fontSize,
+              transform,
+              WebkitTransform: transform,
+            }}
           >
             {letter}
           </span>

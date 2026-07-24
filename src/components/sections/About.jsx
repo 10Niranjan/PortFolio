@@ -1,8 +1,10 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { personal } from '@/data'
+import { personal, timeline } from '@/data'
 import SpotifyPlayer from './SpotifyPlayer'
 import SectionLabel from '@/components/ui/SectionLabel'
+import Timeline from '@/components/ui/Timeline'
+import CircularText from '@/components/react-bits/CircularText'
 
 /* davidhaz.com About section:
    - Dark section, full-width
@@ -42,6 +44,7 @@ export default function About() {
         alignItems: 'center',
       }}>
         {/* Left: Portrait photo card */}
+        <div style={{ position: 'relative', width: '100%', maxWidth: 420, margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, scale: 0.94 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -54,8 +57,6 @@ export default function About() {
             overflow: 'hidden',
             aspectRatio: '3 / 4',
             width: '100%',
-            maxWidth: 420,
-            margin: '0 auto',
             boxShadow: '0 0 60px rgba(124,58,237,0.18), 0 24px 64px rgba(0,0,0,0.55)',
           }}
         >
@@ -81,10 +82,45 @@ export default function About() {
             background: 'linear-gradient(160deg, rgba(124,58,237,0.08) 0%, transparent 50%)',
             pointerEvents: 'none',
           }} />
-
-
-
         </motion.div>
+
+        {/* Rotating availability badge — overlaps the photo card's bottom-right corner */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ delay: 0.3, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            position: 'absolute',
+            bottom: -28,
+            right: -28,
+            width: 112,
+            height: 112,
+            borderRadius: '50%',
+            background: 'var(--color-bg)',
+            border: '1px solid var(--color-border)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.35)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <CircularText
+            text={`${personal.availability.toUpperCase()} • PUNE, INDIA • `}
+            size={100}
+            fontSize={9}
+            spinDuration={16}
+          />
+          <span style={{
+            position: 'absolute',
+            width: 8,
+            height: 8,
+            borderRadius: '50%',
+            background: '#34d399',
+            boxShadow: '0 0 8px rgba(52,211,153,0.8)',
+          }} />
+        </motion.div>
+        </div>
 
         {/* Right: Bio + CTA */}
         <div ref={ref} style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
@@ -148,6 +184,24 @@ export default function About() {
           <div style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'flex-start' }}>
             <SpotifyPlayer />
           </div>
+        </div>
+      </div>
+
+      {/* Recent milestones — timeline */}
+      <div style={{ marginTop: 'clamp(4rem, 8vh, 6rem)' }}>
+        <h3 style={{
+          fontFamily: "'Outfit', sans-serif",
+          fontSize: '0.78rem',
+          fontWeight: 700,
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          color: 'var(--color-muted)',
+          margin: '0 0 2rem',
+        }}>
+          Recent Milestones
+        </h3>
+        <div style={{ maxWidth: 640 }}>
+          <Timeline items={timeline} />
         </div>
       </div>
     </section>

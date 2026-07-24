@@ -35,6 +35,57 @@ export const highlights = [
   "Google Cybersecurity Foundations — certified.",
 ];
 
+export const timeline = [
+  {
+    type: "project",
+    title: "Jyoti Traders",
+    description: "Closed, invite-only B2B wholesale ordering app — Flutter, Riverpod, Firebase.",
+    status: "In Progress",
+  },
+  {
+    type: "project",
+    title: "Svarae",
+    description: "Premium eCommerce store — Next.js, Zustand, Prisma, CockroachDB.",
+    status: "In Progress",
+  },
+  {
+    type: "project",
+    title: "Campus Connect",
+    description: "Campus collaboration platform — React, Node.js, Express, MongoDB, Socket.io.",
+    status: "In Progress",
+  },
+  {
+    type: "project",
+    title: "Prophecy Aesthetics",
+    description: "Premium single-page web experience — HTML5, Vanilla CSS, JavaScript, Vite.",
+    status: "Live",
+  },
+  {
+    type: "project",
+    title: "Fanclub Cricket App",
+    description: "Cross-platform Flutter development with real-time data.",
+    status: "Completed",
+  },
+  {
+    type: "project",
+    title: "Java To-Do App",
+    description: "CRUD task management with JavaFX & console interface.",
+    status: "Completed",
+  },
+  {
+    type: "certification",
+    title: "Google Cybersecurity Foundations",
+    description: "Professional certification.",
+    status: "Certified",
+  },
+  {
+    type: "milestone",
+    title: "50+ DSA Problems",
+    description: "Solved on LeetCode — Java, still counting.",
+    status: "Ongoing",
+  },
+];
+
 export const projects = [
   {
     id: 1,
