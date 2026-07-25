@@ -10,7 +10,7 @@ export const personal = {
   tagline: "Designing high-fidelity interfaces and modern web solutions.",
   bio: "I'm a **full stack developer & software engineer** based in Pune, India. I develop **intuitive user interfaces and high-performance web and mobile solutions,** focusing on building high quality web experiences through **clean code and thoughtful design.**",
   location: "Pune, India 🇮🇳",
-  availability: "Open to Work",
+  availability: "Open to Collaborate",
   email: "pvt.niranjan10@gmail.com",
   phone: "+91 9284774471",
   resumeUrl: "/resume.pdf",
