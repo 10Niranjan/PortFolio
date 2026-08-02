@@ -2,7 +2,8 @@
 
 <div align="center">
 
-**Code. Design. Ship.**
+<img src=".github/assets/banner.svg" alt="Niranjan Patil — Code · Design · Ship" width="900" />
+
 Personal portfolio showcasing full-stack, mobile & web projects — built as a fast, animated single-page site.
 
 [![Live Site](https://img.shields.io/badge/Live-10niranjan.github.io%2FPortFolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://10niranjan.github.io/PortFolio)

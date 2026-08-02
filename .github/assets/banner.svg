@@ -1,0 +1,31 @@
+<svg width="900" height="180" viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g1" cx="28%" cy="22%" r="60%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="76%" cy="85%" r="55%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.045 0"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="180" fill="#0d0c12"/>
+  <rect width="900" height="180" fill="url(#g1)"/>
+  <rect width="900" height="180" fill="url(#g2)"/>
+  <rect width="900" height="180" filter="url(#grain)"/>
+
+  <text x="450" y="94" text-anchor="middle"
+        font-family="SFMono-Regular, ui-monospace, Menlo, Consolas, monospace"
+        font-size="30" font-weight="600" letter-spacing="-0.3"
+        fill="#eae7e2">Niranjan Patil</text>
+
+  <text x="450" y="122" text-anchor="middle"
+        font-family="SFMono-Regular, ui-monospace, Menlo, Consolas, monospace"
+        font-size="12.5" letter-spacing="2.2"
+        fill="#b6aee0">CODE · DESIGN · SHIP</text>
+</svg>
