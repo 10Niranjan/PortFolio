@@ -89,8 +89,8 @@ export default function CurvedLoop({ items, speed = 72 }) {
           max-width: 92%;
           font-family: 'Outfit', sans-serif;
           font-weight: 700;
-          font-size: 1.12rem;
-          letter-spacing: 0.05em;
+          font-size: 0.88rem;
+          letter-spacing: 0.02em;
           text-transform: uppercase;
           color: #fff;
           white-space: nowrap;

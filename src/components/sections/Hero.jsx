@@ -84,6 +84,19 @@ export default function Hero() {
         overflow: 'hidden',
       }}
     >
+      <style>{`
+        .rgb-strip-card {
+          padding: 1px;
+          background: linear-gradient(115deg, #00FF87, #7C3AED, #00E5FF, #00FF87);
+          background-size: 300% 300%;
+          animation: rgb-strip-shift 8s ease infinite;
+        }
+        @keyframes rgb-strip-shift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+      `}</style>
+
       {/* SVG ClipPath definition */}
       {w > 0 && h > 0 && (
         <svg width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none' }}>
@@ -236,15 +249,20 @@ export default function Hero() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.25, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="rgb-strip-card"
             style={{
-              padding: isMobile ? 24 : 32,
               borderRadius: 24,
-              border: '1px solid rgba(255,255,255,0.12)',
-              background: 'linear-gradient(155deg, rgba(91,63,228,0.14) 0%, rgba(0,0,0,0.4) 60%)',
               minHeight: isMobile ? 320 : 0,
             }}
           >
-            <CurvedLoop items={SHOWCASE_TAGS} />
+            <div style={{
+              height: '100%',
+              borderRadius: 23,
+              padding: isMobile ? 24 : 32,
+              background: 'linear-gradient(155deg, rgba(91,63,228,0.14) 0%, rgba(0,0,0,0.4) 60%), #0B0F0D',
+            }}>
+              <CurvedLoop items={SHOWCASE_TAGS} />
+            </div>
           </motion.div>
         </div>
       </div>
