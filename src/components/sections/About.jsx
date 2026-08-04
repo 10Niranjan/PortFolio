@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
-import { personal, timeline } from '@/data'
+import { personal } from '@/data'
 import SpotifyPlayer from './SpotifyPlayer'
 import SectionLabel from '@/components/ui/SectionLabel'
-import Timeline from '@/components/ui/Timeline'
 import CircularText from '@/components/react-bits/CircularText'
 import DecryptedText from '@/components/react-bits/DecryptedText'
 
@@ -202,24 +201,6 @@ export default function About() {
           <div style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'flex-start' }}>
             <SpotifyPlayer />
           </div>
-        </div>
-      </div>
-
-      {/* Recent milestones — timeline */}
-      <div style={{ marginTop: 'clamp(4rem, 8vh, 6rem)' }}>
-        <h3 style={{
-          fontFamily: "'Outfit', sans-serif",
-          fontSize: '0.78rem',
-          fontWeight: 700,
-          letterSpacing: '0.18em',
-          textTransform: 'uppercase',
-          color: 'var(--color-muted)',
-          margin: '0 0 2rem',
-        }}>
-          Recent Milestones
-        </h3>
-        <div style={{ maxWidth: 640 }}>
-          <Timeline items={timeline} />
         </div>
       </div>
     </section>
