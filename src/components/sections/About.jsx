@@ -1,19 +1,17 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { personal, timeline } from '@/data'
 import SpotifyPlayer from './SpotifyPlayer'
 import SectionLabel from '@/components/ui/SectionLabel'
 import Timeline from '@/components/ui/Timeline'
 import CircularText from '@/components/react-bits/CircularText'
+import DecryptedText from '@/components/react-bits/DecryptedText'
 
 /* davidhaz.com About section:
    - Dark section, full-width
    - Left: very large display name initials / monogram in gradient
-   - Right: bio text with word-by-word blur-in, location chip, availability badge, CTA */
+   - Right: bio text with decrypt-reveal-in, location chip, availability badge, CTA */
 
 export default function About() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
   const wordsRaw = personal.bio.split(' ')
   let isBold = false
   const words = wordsRaw.map(word => {
@@ -31,13 +29,38 @@ export default function About() {
     }
     return { text: cleanWord, bold: currentBold }
   })
+  // Flatten back into one string with a per-character bold mask, so the
+  // decrypt effect runs as a single left-to-right pass over the whole
+  // paragraph instead of restarting per word/segment.
+  let bioText = ''
+  const boldMask = []
+  words.forEach((w, i) => {
+    for (const ch of w.text) {
+      bioText += ch
+      boldMask.push(w.bold)
+    }
+    if (i < words.length - 1) {
+      bioText += ' '
+      boldMask.push(false)
+    }
+  })
   return (
     <section id="about" style={{
       padding: 'clamp(5rem, 10vh, 8rem) clamp(20px, 3.5vw, 48px)',
     }}>
+      <style>{`
+        @media (max-width: 700px) {
+          .about-grid { grid-template-columns: 1fr !important; }
+          .about-avatar-badge { bottom: -14px !important; right: -14px !important; }
+        }
+        .bio-encrypted { color: var(--color-muted); opacity: 0.55; }
+        .bio-bold { font-weight: 700; color: var(--color-text); }
+        .bio-muted { font-weight: 400; color: var(--color-muted); }
+      `}</style>
+
       <SectionLabel style={{ marginBottom: '4rem' }}>About</SectionLabel>
 
-      <div style={{
+      <div className="about-grid" style={{
         display: 'grid',
         gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 3fr)',
         gap: 'clamp(2.5rem, 6vw, 6rem)',
@@ -90,6 +113,7 @@ export default function About() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ delay: 0.3, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="about-avatar-badge"
           style={{
             position: 'absolute',
             bottom: -28,
@@ -123,29 +147,23 @@ export default function About() {
         </div>
 
         {/* Right: Bio + CTA */}
-        <div ref={ref} style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
           <p style={{
             fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
             lineHeight: 1.82,
             color: 'var(--color-text)',
             margin: 0,
+            letterSpacing: '-0.01em',
           }}>
-            {words.map((w, i) => (
-              <motion.span
-                key={i}
-                style={{ 
-                  display: 'inline',
-                  fontWeight: w.bold ? 700 : 400,
-                  color: w.bold ? 'var(--color-text)' : 'var(--color-muted)',
-                  letterSpacing: '-0.01em',
-                }}
-                initial={{ opacity: 0.1, filter: 'blur(4px)' }}
-                animate={inView ? { opacity: 1, filter: 'blur(0px)' } : {}}
-                transition={{ delay: 0.015 * i, duration: 0.45, ease: 'easeOut' }}
-              >
-                {w.text}{' '}
-              </motion.span>
-            ))}
+            <DecryptedText
+              text={bioText}
+              animateOn="view"
+              sequential
+              speed={18}
+              revealDirection="start"
+              className={i => (boldMask[i] ? 'bio-bold' : 'bio-muted')}
+              encryptedClassName="bio-encrypted"
+            />
           </p>
 
           <motion.a
