@@ -18,7 +18,6 @@ export default function CurvedLoop({ items, speed = 72 }) {
   const containerRef = useRef(null)
   const itemRefs = useRef([])
   const offsetRef = useRef(0)
-  const pausedRef = useRef(false)
   const loopItems = useRef(Array.from({ length: items.length * REPEATS }, (_, i) => items[i % items.length])).current
 
   useEffect(() => {
@@ -38,10 +37,8 @@ export default function CurvedLoop({ items, speed = 72 }) {
 
         // Adding makes y = i*step - offset shrink over time, i.e. items drift
         // upward — bottom → top, as required.
-        if (!pausedRef.current) {
-          offsetRef.current += speed * dt
-          if (offsetRef.current >= cycle) offsetRef.current -= cycle
-        }
+        offsetRef.current += speed * dt
+        if (offsetRef.current >= cycle) offsetRef.current -= cycle
         const offset = offsetRef.current
 
         for (let i = 0; i < loopItems.length; i++) {
@@ -70,8 +67,6 @@ export default function CurvedLoop({ items, speed = 72 }) {
     <div
       ref={containerRef}
       className="curved-loop"
-      onMouseEnter={() => { pausedRef.current = true }}
-      onMouseLeave={() => { pausedRef.current = false }}
     >
       <style>{`
         .curved-loop {

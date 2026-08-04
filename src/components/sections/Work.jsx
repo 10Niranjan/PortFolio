@@ -22,6 +22,7 @@ function ProjectRow({ project, index }) {
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className="project-row"
       style={{
         display: 'grid',
         gridTemplateColumns: '3.5rem 1fr auto',
@@ -33,9 +34,7 @@ function ProjectRow({ project, index }) {
         color: 'var(--color-text)',
         position: 'relative',
         cursor: hasLink ? 'pointer' : 'default',
-        transition: 'opacity 0.25s',
       }}
-      whileHover={hasLink ? { opacity: 0.75 } : {}}
     >
       {/* Spotlight glow — sits behind the row content, tracks the cursor */}
       <SpotlightCard
@@ -118,7 +117,7 @@ function ProjectRow({ project, index }) {
 
       {/* Arrow */}
       {hasLink && (
-        <div style={{
+        <div className="project-row-arrow" style={{
           width: 44, height: 44,
           borderRadius: '50%',
           border: '1.5px solid var(--glass-border)',
@@ -156,6 +155,14 @@ export default function Work() {
     <section id="work" style={{
       padding: 'clamp(5rem, 10vh, 8rem) clamp(20px, 3.5vw, 48px)',
     }}>
+      <style>{`
+        .project-row:hover .project-row-arrow {
+          background: var(--color-accent);
+          border-color: transparent;
+          color: #000;
+        }
+      `}</style>
+
       <SectionLabel>Selected Work</SectionLabel>
 
       <div>

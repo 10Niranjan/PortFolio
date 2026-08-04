@@ -11,16 +11,16 @@ export default function SpotifyPlayer() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      style={{ width: 320, flexShrink: 0 }}
+      style={{ width: '100%', maxWidth: 320, flexShrink: 0 }}
     >
       <iframe
         style={{
           borderRadius: '12px',
           border: 0,
           display: 'block',
+          width: '100%',
         }}
         src="https://open.spotify.com/embed/playlist/395vDKihoAXaP3akmWoecF?utm_source=generator&theme=0&locale=en_US"
-        width="320"
         height="152"
         allowFullScreen
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"

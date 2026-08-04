@@ -26,8 +26,8 @@
   --font-display: 'Outfit', sans-serif;
 
   /* Spacing & Layout */
-  --section-px:   clamp(1.5rem, 5vw, 6rem);
-  --section-py:   clamp(4rem, 10vh, 8rem);
+  --section-px:   clamp(20px, 3.5vw, 48px);
+  --section-py:   clamp(5rem, 10vh, 8rem);
   --max-width:    1280px;
 
   /* Cards & Borders */
