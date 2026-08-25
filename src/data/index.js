@@ -56,9 +56,9 @@ export const timeline = [
   },
   {
     type: "project",
-    title: "Prophecy Aesthetics",
-    description: "Premium single-page web experience — HTML5, Vanilla CSS, JavaScript, Vite.",
-    status: "Live",
+    title: "Ergo",
+    description: "Enterprise HRMS for attendance, leave & payroll — Node.js, Express, PostgreSQL, React.",
+    status: "In Progress",
   },
   {
     type: "project",
@@ -88,6 +88,16 @@ export const timeline = [
 
 export const projects = [
   {
+    id: 9,
+    title: "Ergo",
+    description: "Enterprise HRMS handling attendance, leave accrual, and deterministic payroll for 500-1000 employees — RBAC-secured admin/employee portals, auto PDF payslips & Excel payroll exports, 194+ passing tests, serverless on Vercel.",
+    tags: ["React", "Node.js", "Express", "PostgreSQL", "JWT Auth", "RBAC"],
+    link: "https://frontend-kappa-weld-57.vercel.app/login",
+    github: "https://github.com/10Niranjan/ERGO-Employee-Management-System",
+    size: "large",
+    inDevelopment: true,
+  },
+  {
     id: 1,
     title: "Svarae",
     description: "Premium eCommerce store with custom glassmorphism, dynamic routing, state-managed cart drawer, and single-page checkout flow.",
@@ -114,16 +124,6 @@ export const projects = [
     tags: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "Tailwind CSS"],
     link: "https://campus-connect-pied-eight.vercel.app/",
     github: "https://github.com/10Niranjan",
-    size: "large",
-    inDevelopment: true,
-  },
-  {
-    id: 3,
-    title: "Prophecy Aesthetics",
-    description: "A premium single-page web experience showcasing personalized vision boards, featuring interactive SPA-style navigation, click-spark particle effects, and dynamic product/video galleries.",
-    tags: ["HTML5", "Vanilla CSS", "JavaScript", "Vite"],
-    link: "https://prophecy-nine.vercel.app/",
-    github: "https://github.com/10Niranjan/Prophecy",
     size: "large",
     inDevelopment: true,
   },
