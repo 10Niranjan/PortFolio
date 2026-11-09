@@ -143,6 +143,28 @@ export default function Contact() {
               {personal.email}
             </a>
           </p>
+
+          <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.8rem' }}>
+            {[
+              { label: 'Resume', href: personal.resumeUrl },
+              { label: 'LinkedIn', href: personal.socials.linkedin },
+              { label: 'GitHub', href: personal.socials.github },
+            ].map(l => (
+              <a
+                key={l.label}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: 'rgba(255,255,255,0.75)',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: 3,
+                }}
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
         </div>
       </motion.div>
     </section>

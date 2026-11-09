@@ -2,54 +2,12 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import './Skills.css'
 import SectionLabel from '@/components/ui/SectionLabel'
+import { skills as SKILLS } from '@/data'
 
 /* ─── Skill rows — exactly like davidhaz.com ───────────────────────
    Each row: [word1] [pill with 3D image] [word2]
    On hover: pill scales up + glow, tech tags slide in below
 ──────────────────────────────────────────────────────────────────── */
-const SKILLS = [
-  {
-    word1: 'Mobile',
-    word2: 'development',
-    image: `${import.meta.env.BASE_URL}skill_mobile.png`,
-    alt: 'Smartphone 3D icon',
-    tags: ['Flutter', 'Dart', 'Firebase', 'Android Studio', 'Provider / Riverpod'],
-    glow: 'rgba(124, 58, 237, 0.55)',
-  },
-  {
-    word1: 'Java &',
-    word2: 'Spring backend',
-    image: `${import.meta.env.BASE_URL}skill_java.png`,
-    alt: 'Gear 3D icon',
-    tags: ['Java (8 · 17 · 21)', 'Spring Boot 3', 'Spring MVC', 'Spring Data JPA', 'Spring Security'],
-    glow: 'rgba(245, 158, 11, 0.55)',
-  },
-  {
-    word1: 'Web &',
-    word2: 'frontend',
-    image: `${import.meta.env.BASE_URL}skill_web.png`,
-    alt: 'Cursor 3D icon',
-    tags: ['React.js', 'JavaScript', 'HTML5 / CSS3', 'Tailwind CSS'],
-    glow: 'rgba(16, 185, 129, 0.55)',
-  },
-  {
-    word1: 'APIs &',
-    word2: 'messaging',
-    image: `${import.meta.env.BASE_URL}skill_api.png`,
-    alt: 'Network 3D icon',
-    tags: ['REST APIs', 'Apache Kafka', 'JWT / OAuth2', 'WebSockets'],
-    glow: 'rgba(236, 72, 153, 0.55)',
-  },
-  {
-    word1: 'Databases &',
-    word2: 'DevOps',
-    image: `${import.meta.env.BASE_URL}skill_db.png`,
-    alt: 'Database 3D icon',
-    tags: ['PostgreSQL', 'MongoDB', 'MySQL', 'Docker', 'Git / GitHub', 'CI/CD'],
-    glow: 'rgba(59, 130, 246, 0.55)',
-  },
-]
-
 const tagContainerVariants = {
   hidden: { height: 0, opacity: 0 },
   show: {
@@ -99,20 +57,29 @@ export default function Skills() {
                 style={{ '--glow': skill.glow }}
               >
                 {/* Left word */}
-                <span className="dh-word">{skill.word1}</span>
+                <span className="dh-word">{skill.label1}</span>
 
                 {/* Pill with 3D image */}
                 <div className={`dh-pill${active ? ' dh-pill--active' : ''}`}>
-                  <img
-                    src={skill.image}
-                    alt={skill.alt}
-                    className="dh-pill-img"
-                    draggable={false}
-                  />
+                  {skill.image ? (
+                    <img
+                      src={`${import.meta.env.BASE_URL}${skill.image}`}
+                      alt={skill.alt}
+                      className="dh-pill-img"
+                      draggable={false}
+                    />
+                  ) : (
+                    <svg className="dh-pill-img" viewBox="0 0 24 24" role="img" aria-label={skill.alt}
+                      fill="none" stroke="#c084fc" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                      style={{ width: '45%', height: '65%' }}>
+                      <path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z" />
+                      <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" />
+                    </svg>
+                  )}
                 </div>
 
                 {/* Right word */}
-                <span className="dh-word">{skill.word2}</span>
+                <span className="dh-word">{skill.label2}</span>
               </div>
 
               {/* ── Tech tags — slide in below ── */}
@@ -128,7 +95,7 @@ export default function Skills() {
                     onMouseEnter={() => setHovered(i)}
                     onMouseLeave={() => setHovered(null)}
                   >
-                    {skill.tags.map((tag, j) => (
+                    {skill.items.map((tag, j) => (
                       <motion.span key={j} variants={tagVariants} className="dh-tag">
                         {tag}
                       </motion.span>
