@@ -167,8 +167,12 @@
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
+  .dh-row {
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
   .dh-word {
-    font-size: clamp(2rem, 9vw, 3.2rem);
+    font-size: clamp(1.4rem, 6.2vw, 3.2rem);
   }
   .dh-pill {
     width:  clamp(64px, 16vw, 88px);
