@@ -1,19 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { personal } from '@/data'
+import { personal, stats, skills } from '@/data'
 import BlurText from '../react-bits/BlurText'
 import CurvedLoop from '../react-bits/CurvedLoop'
 import Grainient from '../canvas/Grainient'
 
-// Static — defined once outside the component so it isn't recreated on every render.
-const SHOWCASE_TAGS = [
-  'Software Developer',
-  'Backend Developer',
-  'Android Developer',
-  'Flutter Developer',
-  'Modern Web Solutions',
-  'High-Fidelity Interfaces',
-]
+const TECH_STACK = skills.flatMap(s => s.items)
 
 export default function Hero() {
   const cardRef = useRef(null)
@@ -244,24 +236,69 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* ── RIGHT: Full-height curved loop showcase ── */}
+          {/* ── RIGHT: curved loop showcase (top) + free space (bottom) ── */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.25, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="rgb-strip-card"
             style={{
-              borderRadius: 24,
-              minHeight: isMobile ? 320 : 0,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 16,
+              minHeight: isMobile ? 640 : 0,
             }}
           >
-            <div style={{
-              height: '100%',
-              borderRadius: 23,
-              padding: isMobile ? 24 : 32,
-              background: 'linear-gradient(155deg, rgba(91,63,228,0.14) 0%, rgba(0,0,0,0.4) 60%), #0B0F0D',
-            }}>
-              <CurvedLoop items={SHOWCASE_TAGS} />
+            <div className="rgb-strip-card" style={{ borderRadius: 24, flex: 1, minHeight: 0 }}>
+              <div style={{
+                height: '100%',
+                borderRadius: 23,
+                padding: isMobile ? 24 : 32,
+                background: 'linear-gradient(155deg, rgba(91,63,228,0.14) 0%, rgba(0,0,0,0.4) 60%), #0B0F0D',
+              }}>
+                <CurvedLoop items={TECH_STACK} />
+              </div>
+            </div>
+            <div className="rgb-strip-card" style={{ borderRadius: 24, flex: 1, minHeight: 0 }}>
+              <div style={{
+                height: '100%',
+                borderRadius: 23,
+                padding: isMobile ? 20 : 28,
+                background: 'linear-gradient(155deg, rgba(91,63,228,0.14) 0%, rgba(0,0,0,0.4) 60%), #0B0F0D',
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gridTemplateRows: '1fr 1fr',
+              }}>
+                {stats.map((stat, i) => (
+                  <div key={stat.label} style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    gap: '0.35rem',
+                    padding: '0.75rem 1rem',
+                    borderRight: i % 2 === 0 ? '1px solid var(--color-border)' : 'none',
+                    borderBottom: i < 2 ? '1px solid var(--color-border)' : 'none',
+                  }}>
+                    <span style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: 'clamp(1.6rem, 2.4vw, 2.2rem)',
+                      fontWeight: 800,
+                      letterSpacing: '-0.02em',
+                      color: 'var(--color-text)',
+                      lineHeight: 1,
+                    }}>
+                      {stat.value}
+                    </span>
+                    <span style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 500,
+                      color: 'var(--color-muted)',
+                      lineHeight: 1.3,
+                    }}>
+                      {stat.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>

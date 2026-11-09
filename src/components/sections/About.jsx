@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { personal } from '@/data'
-import SpotifyPlayer from './SpotifyPlayer'
 import SectionLabel from '@/components/ui/SectionLabel'
 import CircularText from '@/components/react-bits/CircularText'
 import DecryptedText from '@/components/react-bits/DecryptedText'
@@ -198,9 +197,6 @@ export default function About() {
             <span style={{ color: 'var(--color-text)', fontSize: '0.8rem' }}>✦</span>
           </motion.a>
 
-          <div style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'flex-start' }}>
-            <SpotifyPlayer />
-          </div>
         </div>
       </div>
     </section>
