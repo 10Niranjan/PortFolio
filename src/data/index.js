@@ -15,6 +15,8 @@ export const personal = {
   phone: "+91 9284774471",
   resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`,
   portfolioRepo: "https://github.com/10Niranjan/portfolio",
+  // Public Web3Forms access key (safe to commit). Empty = contact form hidden, mailto links only.
+  contactFormKey: "f5c7518f-74cb-4e90-b1b7-099d1c3fa6be",
   socials: {
     github: "https://github.com/10Niranjan",
     linkedin: "https://www.linkedin.com/in/niranjanpatil10",
